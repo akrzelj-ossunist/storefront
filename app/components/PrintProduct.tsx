@@ -1,13 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-
-interface IProduct {
-  id: string;
-  name: string;
-  img: string;
-  price: string;
-}
+import { IProduct } from "../interfaces/interface";
 
 const PrintProduct: React.FC<IProduct> = ({ id, name, img, price }) => {
   return (

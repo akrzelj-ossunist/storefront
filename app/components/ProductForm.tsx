@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
+import { IForm, IInfo } from "../interfaces/interface";
 
-interface IForm {
-  size: string;
-  color: string;
-  quantity: number;
-}
-
-const ProductForm: React.FC<{ sizes: any }> = ({ sizes }) => {
+const ProductForm: React.FC<{
+  sizes: any;
+  info: IInfo;
+  getCart: (val: any) => void;
+  cart: any;
+}> = ({ sizes, info, getCart, cart }) => {
   const [productForm, getProductForm] = useState<IForm>({
     size: sizes[0].value,
     color: "White",
@@ -15,9 +15,9 @@ const ProductForm: React.FC<{ sizes: any }> = ({ sizes }) => {
   });
   return (
     <>
-      <form>
+      <form onSubmit={() => getCart([...cart, { ...productForm, ...info }])}>
         <select
-          className="w-[440px] h-[40px] border-[1px] border-[#E5E7EB] flex justify-center items-center"
+          className="w-[440px] h-[40px] border-[1px] border-[#E5E7EB] flex justify-center items-center my-2 p-2"
           onChange={(e) =>
             getProductForm({ ...productForm, size: e.target.value })
           }
@@ -27,7 +27,7 @@ const ProductForm: React.FC<{ sizes: any }> = ({ sizes }) => {
           ))}
         </select>
         <select
-          className="w-[440px] h-[40px] border-[1px] border-[#E5E7EB] flex justify-center items-center"
+          className="w-[440px] h-[40px] border-[1px] border-[#E5E7EB] flex justify-center items-center my-2 p-2"
           onChange={(e) =>
             getProductForm({ ...productForm, color: e.target.value })
           }
@@ -36,12 +36,12 @@ const ProductForm: React.FC<{ sizes: any }> = ({ sizes }) => {
           <option value="black">Black</option>
         </select>
         <div className="flex relative">
-          <p className="w-[440px] h-[40px] border-[1px] border-[#E5E7EB] flex justify-center items-center">
+          <p className="w-[440px] h-[40px] border-[1px] border-[#E5E7EB] flex justify-center items-center my-2">
             {productForm.quantity}
           </p>
           <button
             type="button"
-            className="absolute left-4 top-[6px] text-xl font-bold"
+            className="absolute left-4 top-[14px] text-xl font-bold"
             onClick={() =>
               getProductForm(
                 productForm.quantity > 1
@@ -54,7 +54,7 @@ const ProductForm: React.FC<{ sizes: any }> = ({ sizes }) => {
           </button>
           <button
             type="button"
-            className="absolute right-4 top-[6px] text-xl font-bold"
+            className="absolute right-4 top-[14px] text-xl font-bold"
             onClick={() =>
               getProductForm({
                 ...productForm,
@@ -68,9 +68,9 @@ const ProductForm: React.FC<{ sizes: any }> = ({ sizes }) => {
 
         <button
           type="submit"
-          className="text-white cursor-pointer font-bold w-[200px] rounded-xl text-2xl bg-blue-500 py-3 active:bg-blue-300 shadow-lg"
+          className="text-white cursor-pointer w-[440px] bg-[#111827] py-3 my-2"
         >
-          Add to cart
+          Add to cart +
         </button>
       </form>
     </>

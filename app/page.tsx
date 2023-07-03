@@ -11,15 +11,15 @@ export default function Home() {
       {isLoading ? (
         <p>Loading</p>
       ) : (
-        <div className="flex justify-center">
-          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 w-[1152px] justify-items-center">
+        <div className="flex flex-col items-center">
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-items-center">
             {productsData.products.map((product: any, index: number) => (
               <PrintProduct
                 key={index}
                 id={product.id}
                 name={product.title}
                 img={product.thumbnail}
-                price={"xxx"}
+                price={product.variants[0].prices[1].amount}
               />
             ))}
           </div>

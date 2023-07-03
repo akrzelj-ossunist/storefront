@@ -1,40 +1,65 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import useGetProductsQuery from "../services/getProducts";
 import ProductForm from "../components/ProductForm";
+import { ICart } from "../interfaces/interface";
 
 const page: React.FC<{ params: any }> = ({ params }) => {
+  const [cart, getCart] = useState<Array<ICart>>(
+    JSON.parse(localStorage.getItem("cart")!) || []
+  );
+
   const { data: productsData, isLoading } = useGetProductsQuery(params.product);
-  if (!isLoading) console.log(productsData);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  if (isLoading) return <p>Loading...</p>;
+
+  const productInfo = {
+    id: productsData.product.id,
+    img: productsData.product.thumbnail,
+    name: productsData.product.title,
+    price: productsData.product.variants[0].prices[1].amount + "EUR",
+  };
   return (
     <>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <div className="flex justify-center flex-wrap">
-          <Image
-            src={productsData.product.thumbnail}
-            alt="img"
-            width={576}
-            height={656}
-            className="w-[576px] h-[656px]"
+      <div className="flex justify-center flex-wrap">
+        <Image
+          src={productsData.product.thumbnail}
+          alt="img"
+          width={576}
+          height={656}
+          className="w-[576px] h-[656px]"
+        />
+        <div className="w-[576px] h-[656px] p-[67px]">
+          <p className="text-[#111827] text-[30px] font-semibold">
+            {productsData.product.title}
+          </p>
+          <p className="text-[#111827] text-[14px] mt-4">
+            {productsData.product.variants[0].prices[1].amount} EUR
+          </p>
+          <p className="text-[#374151] text-[12px] my-8">
+            {productsData.product.description}
+          </p>
+          <ProductForm
+            sizes={productsData.product.options[0].values}
+            info={productInfo}
+            getCart={getCart}
+            cart={cart}
           />
-          <div className="w-[576px] h-[656px] p-[67px]">
-            <p>{productsData.product.title}</p>
-            <p>{productsData.product.variants[0].prices[1].amount} EUR</p>
-            <p>{productsData.product.description}</p>
-            <ProductForm sizes={productsData.product.options[0].values} />
-            <p>Product details</p>
-            <p>Material</p>
-            <p>
-              {productsData.product.material
-                ? productsData.product.material
-                : "Cotton 100%"}
-            </p>
-          </div>
+          <p className="font-semibold text-xs mt-4">Product details</p>
+          <p className="font-semibold text-xs mt-2 mb-1">Material</p>
+          <p className="text-[#374151] text-[10px]">
+            {productsData.product.material
+              ? productsData.product.material
+              : "Cotton 100%"}
+          </p>
         </div>
-      )}
+      </div>
     </>
   );
 };
