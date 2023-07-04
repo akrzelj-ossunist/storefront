@@ -22,15 +22,14 @@ Prerequisite: Node Package Manager (npm) download can be found <a href="https://
 
 - Short description of the project
   - Time spent
-    -Project didnt take lot of my time. I did it in around 4/5 days but if you sit trough it can be easely done in 1 day.
+    - The project didn't take a lot of my time. I did it in around 4/5 days but if you sit through it can be easily done in 1 day.
   - The implementation that was most challenging
-    -There was nothing I wasnt familiar with but id say most challenging was setup medusa backend with database because that was first time i was doing that.
+    - There was nothing I wasn't familiar with, but I say the most challenging was setting Medusa backend with a database because that was the first time I did that.
   - The implementation you are most proud of
-    -I additionaly implemented cart function so id say that would be it.
+    - I additionally implemented a cart function, so I'd say that would be it.
   - Concise description of how you structured the project and any considerations you might have had
-    -I made home page where i listed all products with grid i fetched from endpoint. After that i made every product link to their personal page where customers can see details of that
-    product and order if they want to. When they decide to buy product product goes to cart where you can remove it if its not needed anymore.
-    -I havent added filtering by collection because value of every product collection is null so i really didnt know based on what i should filter.
+    - I made a home page where I listed all products with the grid I fetched from the endpoint. After that, I made every product link to their personal page where customers can see details of that product and order if they want to. When they decide to buy a product, the product goes to a cart where you can remove it if it's not needed anymore.
+    - I havent added filtering by collection because the value of every product collection is null, so I really didn't know based on what i should filter.
 
 ## Screenshots
 
