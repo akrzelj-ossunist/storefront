@@ -3,17 +3,31 @@
 App created in NextJS with typescript and ESlint with function of listing and showing all products and detailed product page.
 Also you can add or remove products from cart.
 
+## First setup medusa
+
+1. Install PostgreSQL database <a href="https://www.postgresql.org/download/">Here</a>
+
+2. Install medusa backend for storefront
+   - npm i @medusajs/medusa-js
+   - medusa new my-medusa-store
+   - cd ./my-medusa-store
+   - medusa seed --seed-file=data/seed.json
+
 ## Getting started
 
 Prerequisite: Node Package Manager (npm) download can be found <a href="https://nodejs.org/en/download/">here</a>.
 
-1. Clone this repository `git clone https://github.com/akrzelj-ossunist/storefront`
+1. Start PostgreSQL
 
-2. `npm update` to install all required dependencies.
+2. `medusa develop` to start backend side of app in backend folder
 
-3. `npm run dev` to start the application. As you make changes the website will be automatically reloaded.
+3. Clone this repository `git clone https://github.com/akrzelj-ossunist/storefront`
 
-4. `localhost:3000` to see the app you have to go to this website.
+4. `npm update` to install all required dependencies.
+
+5. `npm run dev` to start the application. As you make changes the website will be automatically reloaded.
+
+6. `localhost:3000` to see the app you have to go to this website.
 
 ## Libraries used for this app
 
