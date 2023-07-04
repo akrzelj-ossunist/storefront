@@ -1,34 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Storefront
 
-## Getting Started
+App created in NextJS with typescript and ESlint with function of listing and showing all products and detailed product page.
+Also you can add or remove products from cart.
 
-First, run the development server:
+## Getting started
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Prerequisite: Node Package Manager (npm) download can be found <a href="https://nodejs.org/en/download/">here</a>.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clone this repository `git clone https://github.com/akrzelj-ossunist/storefront`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. `npm update` to install all required dependencies.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. `npm run dev` to start the application. As you make changes the website will be automatically reloaded.
 
-## Learn More
+4. `localhost:3000` to see the app you have to go to this website.
 
-To learn more about Next.js, take a look at the following resources:
+## Libraries used for this app
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<a href="https://tanstack.com/query/v4/docs/react/installation">-React Query</a>
+<a href="https://axios-http.com/docs/intro">-Axios</a>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Short description of the project
+  - Time spent
+    -Project didnt take lot of my time. I did it in around 4/5 days but if you sit trough it can be easely done in 1 day.
+  - The implementation that was most challenging
+    -There was nothing I wasnt familiar with but id say most challenging was setup medusa backend with database because that was first time i was doing that.
+  - The implementation you are most proud of
+    -I additionaly implemented cart function so id say that would be it.
+  - Concise description of how you structured the project and any considerations you might have had
+    -I made home page where i listed all products with grid i fetched from endpoint. After that i made every product link to their personal page where customers can see details of that
+    product and order if they want to. When they decide to buy product product goes to cart where you can remove it if its not needed anymore.
+    -I havent added filtering by collection because value of every product collection is null so i really didnt know based on what i should filter.
 
-## Deploy on Vercel
+## Screenshots
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Home:
+![image](./public/home-desk.png)
+![image](./public/home-phone.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Product:
+![image](./public/page-desk.png)
+![image](./public/page-phone.png)
+
+Cart
+![image](./public/cart-desk.png)
+![image](./public/cart-phone.png)
