@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import useGetProductsQuery from "../services/getProducts";
@@ -7,9 +6,11 @@ import ProductForm from "../components/ProductForm";
 import { ICart } from "../interfaces/interface";
 
 const page: React.FC<{ params: any }> = ({ params }) => {
-  const [cart, getCart] = useState<Array<ICart>>(
-    JSON.parse(localStorage.getItem("cart")!) || []
-  );
+  const [cart, setCart] = useState<Array<ICart>>(() => {
+    if (typeof window !== "undefined")
+      return JSON.parse(localStorage.getItem("cart")!) || [];
+    return [];
+  });
 
   const { data: productsData, isLoading } = useGetProductsQuery(params.product);
 
@@ -33,9 +34,9 @@ const page: React.FC<{ params: any }> = ({ params }) => {
           alt="img"
           width={576}
           height={656}
-          className="w-[576px] h-[656px]"
+          className="md:w-[576px] md:h-[656px]"
         />
-        <div className="w-[576px] h-[656px] p-[67px]">
+        <div className="md:w-[576px] h-[656px] md:p-[67px] w-[350px] pt-16">
           <p className="text-[#111827] text-[30px] font-semibold">
             {productsData.product.title}
           </p>
@@ -48,7 +49,7 @@ const page: React.FC<{ params: any }> = ({ params }) => {
           <ProductForm
             sizes={productsData.product.options[0].values}
             info={productInfo}
-            getCart={getCart}
+            getCart={setCart}
             cart={cart}
           />
           <p className="font-semibold text-xs mt-4">Product details</p>

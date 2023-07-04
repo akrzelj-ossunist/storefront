@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Ham from "../assets/ham.svg";
 import Cart from "../assets/cart.svg";

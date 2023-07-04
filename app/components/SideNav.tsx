@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { ICart } from "../interfaces/interface";
 import Image from "next/image";
@@ -12,7 +13,7 @@ const SideNav: React.FC<{
   );
   return (
     <div
-      className={`w-[415px] phone:w-full rounded-l-2xl py-8 bg-white h-[100vh] fixed z-50 right-0 top-0 overflow-y-auto ${classValues} flex flex-col`}
+      className={`sm:w-[415px] rounded-l-2xl py-8 bg-white h-[100vh] fixed z-50 right-0 top-0 overflow-y-auto ${classValues} flex flex-col w-full`}
     >
       <Exit
         className="absolute top-4 right-4"
