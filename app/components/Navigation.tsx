@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Modal from "./Modal";
 import SideNav from "./SideNav";
+import dynamic from "next/dynamic";
 
 const Navigation: React.FC = () => {
   const [modal, setModal] = useState(false);
@@ -31,4 +32,4 @@ const Navigation: React.FC = () => {
   );
 };
 
-export default Navigation;
+export default dynamic(() => Promise.resolve(Navigation), { ssr: false });

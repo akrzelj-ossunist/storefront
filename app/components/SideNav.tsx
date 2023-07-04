@@ -8,9 +8,11 @@ const SideNav: React.FC<{
   className: string;
   setModal: (val: boolean) => void;
 }> = ({ className: classValues, setModal }) => {
-  const [cart, setCart] = useState<Array<ICart>>(
-    JSON.parse(localStorage.getItem("cart")!) || []
-  );
+  const [cart, setCart] = useState<Array<ICart>>(() => {
+    if (typeof window !== "undefined")
+      return JSON.parse(localStorage.getItem("cart")!) || [];
+    return [];
+  });
   return (
     <div
       className={`sm:w-[415px] rounded-l-2xl py-8 bg-white h-[100vh] fixed z-50 right-0 top-0 overflow-y-auto ${classValues} flex flex-col w-full`}
